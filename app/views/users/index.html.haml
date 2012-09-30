@@ -1,0 +1,37 @@
+- title t('.title')
+
+- if can? :new, User
+  %p.nav= link_to t('.new_user'), new_user_path, :class => 'new'
+
+- colspan = 0
+- action = {}
+- for abilty in [:show, :edit, :destroy]
+  - if can? abilty, User
+    - colspan += 1
+    - action[abilty] = true
+
+%table
+  %thead
+    %tr
+      %th= User.human_attribute_name :email
+      %th= User.human_attribute_name :active
+      - if colspan > 0
+        %th{:colspan => colspan}= t 'actions'
+
+  %tbody
+    - for user in @users
+      %tr{ :class => cycle(:odd, :even) }
+        %td= user.email
+        %td= t user.active?.to_s
+        - if action[:show]
+          %td.action
+            - if can? :show, user
+              = link_to t('show'), user, :class => 'show'
+        - if action[:edit]
+          %td.action
+            - if can? :edit, user
+              = link_to t('edit'), edit_user_path(user), :class => 'edit'
+        - if action[:destroy]
+          %td.action
+            - if can? :destroy, user
+              = link_to t('destroy'), user, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy'

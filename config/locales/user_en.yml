@@ -1,0 +1,37 @@
+--- 
+en:
+  activerecord:
+    models:
+      user:
+        User
+
+    attributes:
+      user:
+        email: Email
+        password_confirmation: Password confirmation
+        password: Password
+
+  users:
+    index:
+      new_user:
+        Create new user
+      title:
+        Listing of users
+    edit:
+      title:
+        Edit user
+    form:
+      user:
+        User
+    new:
+      title:
+        Sing up
+    show:
+      title:
+        User details
+    was_created:
+      You have successfully registered. Please, check your email for the activation instructions
+    was_updated:
+      User was successfully updated
+    was_deleted:
+      User was successfully deleted

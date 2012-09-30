@@ -1,0 +1,33 @@
+= form_for(@user) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = t 'errors.template.header', :model => t('.user'), :count => @user.errors.count
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  = render :partial => 'fields', :locals => { :f => f, :user => @user }
+
+  - if can? :set_roles, @user
+    .field
+      - for role in User::ROLES
+        %br
+        - disabled = false
+        - klass = nil
+        - confirm = nil
+        - if User::ROLES.include? role
+          - disabled = @user.roles.include?(role) || role == 'client'
+          - if role == 'manager'
+            - klass = 'set_manager'
+            - confirm = t 'managers.go_to_create', :default => 'Create the manager?'
+        = check_box_tag "user[roles][]", role, @user.roles.include?(role), :id => "user_#{role}", :disabled => disabled, :class => klass, :confirm => confirm
+        = f.label role, t("user.#{role}")
+
+    = hidden_field_tag "user[roles][]", ""
+
+  .actions
+    - if @user.new_record?
+      = f.submit t('authlogic.register')
+    - else
+      = f.submit

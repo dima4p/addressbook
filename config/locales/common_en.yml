@@ -1,0 +1,31 @@
+--- 
+en:
+  actions:
+    Actions
+  application_name:
+    Address Book
+  are_you_sure:
+    Are you sure?
+  back:
+    Back to list
+  cancel: Сancel
+  data_at: "Data at %{time}."
+  destroy:
+    Delete
+  edit:
+    Edit
+  edit_profile:
+    Edit Profile
+  'false': 'no'
+  login:
+    Login
+  logout:
+    Logout
+  show:
+    Show
+  sign_up:
+    Sign up
+  'true': 'yes'
+  update: Update
+  you_are_logged_as:
+    You are logged as %{name}

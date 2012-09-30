@@ -1,0 +1,13 @@
+--- 
+en: 
+  activation_instructions: "Activation Instructions"
+  activerecord: 
+    attributes: 
+      user: 
+        active: Active
+  no_login_to_acces: "You must be logged out to access this page"
+  users: 
+    account_activated: "Your account has been activated!"
+    can_not_find_activation: "Can not find a user with s activation code. It is possible that the user is activated already."
+  welcome: 
+    text: Welcome!

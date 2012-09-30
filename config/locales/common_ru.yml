@@ -1,0 +1,21 @@
+--- 
+ru: 
+  actions: Действия
+  application_name: "Записная книжка"
+  are_you_sure: "Вы уверены?"
+  back: "К списку"
+  cancel: Отменить
+  data_at: "Данные на %{time}."
+  destroy: Удалить
+  edit: Редактировать
+  edit_profile: "Редактирвать профиль"
+  ? "false"
+  : 'нет'
+  login: Войти
+  logout: Выйти
+  show: Показать
+  sign_up: Зарегистрироваться
+  ? "true"
+  : да
+  update: Обновить
+  you_are_logged_as: "Вы зашли как %{name}"

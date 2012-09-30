@@ -1,0 +1,10 @@
+---
+ru:
+  access_denied: У Вас нет прав для доступа к этой странице
+  activerecord:
+    attributes:
+      user:
+        roles:
+          Роли
+  user:
+    admin: Администратор

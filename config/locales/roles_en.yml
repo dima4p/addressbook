@@ -1,0 +1,9 @@
+--- 
+en: 
+  access_denied: "You have no rights to access this page"
+  activerecord: 
+    attributes: 
+      user: 
+        roles: Roles
+  user: 
+    admin: Admin

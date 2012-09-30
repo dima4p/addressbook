@@ -1,0 +1,12 @@
+--- 
+ru: 
+  simple_form: 
+    error_notification: 
+      default_message: "Пожалуйста, обратите внимание на следующие проблемы"
+    ? "no"
+    : Нет
+    required: 
+      mark: "*"
+      text: 'обязательное поле'
+    ? "yes"
+    : Да

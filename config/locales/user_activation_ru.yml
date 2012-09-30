@@ -1,0 +1,13 @@
+--- 
+ru: 
+  activation_instructions: "Инструкция по активации"
+  activerecord: 
+    attributes: 
+      user: 
+        active: Активный
+  no_login_to_acces: "Вы не должны быть залогинены, чтобы иметь доступ к этой странице"
+  users: 
+    account_activated: "Ваш профиль активирован!"
+    can_not_find_activation: "Нет пользователя с таким кодом активации. Возмжно, профиль уже активирован."
+  welcome: 
+    text: "Добро пожаловать!"
