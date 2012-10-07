@@ -14,7 +14,11 @@ ru:
       title: "Новая запись"
     form: 
       contact: Запись
+    import: 
+      upload: 'Отправить файл и обновить записи'
     index: 
+      export_contacts: 'Cохранить как CSV'
+      import_contacts: 'Загрузить новые данные'
       new_contact: "Добавить новую запись"
       title: Телефоны
     new: 

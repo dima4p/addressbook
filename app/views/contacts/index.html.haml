@@ -1,7 +1,12 @@
 - title t('.title')
 
-- if can? :new, Contact
-  %p.nav= link_to t('.new_contact'), new_contact_path, :class => 'new'
+%p.nav
+  - if can? :new, Contact
+    = link_to t('.new_contact'), new_contact_path, :class => 'new'
+  - if can? :export, Contact
+    = link_to t('.export_contacts'), export_contacts_path, :class => 'export'
+  - if can? :import, Contact
+    = link_to t('.import_contacts'), import_contacts_path, :class => 'import'
 
 - colspan = 0
 - action = {}

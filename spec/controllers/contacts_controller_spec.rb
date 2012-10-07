@@ -122,4 +122,30 @@ describe ContactsController do
     end
   end
 
+  describe "GET export" do
+    it 'forms the csv file for the available contacts and renders as file' do
+      Contact.should_receive(:to_csv) {'csv text'}
+      get :export
+      response.body.should == 'csv text'
+    end
+  end
+
+  describe "GET import" do
+    it 'renders the "import" template' do
+      get :import
+      response.should render_template("import")
+    end
+  end
+
+  describe "POST upload" do
+    it 'renders the "import" template' do
+      filename = File.join(['', 'files', 'address_book.csv'])
+      file = fixture_file_upload(filename, 'text/scv')
+      Contact.should_receive(:merge_csv).with(file.read, current_user)
+      file = fixture_file_upload(filename, 'text/scv')
+      post :upload, csv: {name: file}
+      response.should redirect_to(contacts_url)
+    end
+  end
+
 end

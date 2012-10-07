@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
 
-  load_and_authorize_resource
+  load_and_authorize_resource index: [:export], except: [:import, :upload]
 
   # GET /contacts
   # GET /contacts.json
@@ -81,4 +81,27 @@ class ContactsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  # GET /contacts/export
+  # GET /contacts/export.json
+  def export
+    #@contacts = Contact.all
+    send_data Contact.to_csv(@contacts),
+        :filename => 'addressbook.csv',
+        :type => 'text/csv; charset=utf-8',
+        :disposition => 'attachment'
+  end
+
+  # GET /contacts/import
+  def import
+    authorize! :import, Contact
+  end
+
+  # POST /contacts/import
+  def upload
+    authorize! :upload, Contact
+    Contact.merge_csv params[:csv][:name].read, current_user
+    redirect_to contacts_url
+  end
+
 end

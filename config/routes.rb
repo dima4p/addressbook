@@ -2,7 +2,13 @@ Addressbook::Application.routes.draw do
   scope "(:locale)",
       :locale =>  /en|ru/ do
 
-    resources :contacts
+    resources :contacts do
+      collection do
+        get :export
+        get :import
+        post :upload
+      end
+    end
 
     resources :password_resets, :only => [ :new, :create, :edit, :update ]
 

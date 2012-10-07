@@ -27,15 +27,15 @@ describe Contact do
 
     describe 'responding to :merge_csv' do
       before :each do
-        user = create :active_user
-        @c1 = create :contact, user: user
-        @c2 = create :contact, user: user
+        @user = create :active_user
+        @c1 = create :contact, user: @user
+        @c2 = create :contact, user: @user
         Contact.count.should == 2
         current_user.stub(:to_i) {current_user.id}
       end
 
       it 'adds new record if no id is set in the file' do
-        res = Contact.merge_csv HEADER + "\n\tnew_name\n", current_user
+        res = Contact.merge_csv HEADER + "\n\tnew_name\n", @user
         res[:total].should == 1
         res[:created].should == 1
         Contact.count.should == 3
@@ -43,7 +43,7 @@ describe Contact do
       end
 
       it 'reports errors if new record is not valid' do
-        res = Contact.merge_csv HEADER + "\n\t\tnew_name\n", current_user
+        res = Contact.merge_csv HEADER + "\n\t\tnew_name\n", @user
         Contact.count.should == 2
         res[:created].should == 0
         res[:errors].should == 1
@@ -51,32 +51,32 @@ describe Contact do
       end
 
       it 'ignores the record if it is not found in the DB' do
-        res = Contact.merge_csv HEADER + "\n#{Contact.count + 1}\tnew_name\n", current_user
+        res = Contact.merge_csv HEADER + "\n#{Contact.count + 1}\tnew_name\n", @user
         Contact.count.should == 2
         res[:skipped].should == 1
       end
 
       it 'ignores the record if timestamp in the DB is newer' do
-        res = Contact.merge_csv HEADER + "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at - 1.hour}\n", current_user
+        res = Contact.merge_csv HEADER + "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at - 1.hour}\n", @user
         Contact.count.should == 2
         res[:skipped].should == 1
       end
 
       it 'ignores the record if the record in the DB is deleted eariler' do
-        res = Contact.merge_csv HEADER + "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at - 1.hour}\n", current_user
+        res = Contact.merge_csv HEADER + "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at - 1.hour}\n", @user
         Contact.count.should == 2
         res[:skipped].should == 1
       end
 
       it 'updates the record if timestamp in the DB is not newer' do
-        res = Contact.merge_csv HEADER + "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at}\n", current_user
+        res = Contact.merge_csv HEADER + "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at}\n", @user
         Contact.count.should == 2
         res[:updated].should == 1
         @c1.reload.first_name.should == 'new_name'
       end
 
       it 'reports errors if timestamp in the DB is not newer but the record has errors' do
-        res = Contact.merge_csv HEADER + "\n#{@c1.id}\t\tnew_name\t\t\t#{@c1.updated_at}\n", current_user
+        res = Contact.merge_csv HEADER + "\n#{@c1.id}\t\tnew_name\t\t\t#{@c1.updated_at}\n", @user
         Contact.count.should == 2
         res[:errors].should == 1
         res[:messages].first.last.should == {:first_name=>["can't be blank"]}
@@ -86,7 +86,7 @@ describe Contact do
         @c1.delete
         Contact.count.should == 1
         res = Contact.merge_csv HEADER +
-            "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at}\t#{@c1.updated_at}\n", current_user
+            "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at}\t#{@c1.updated_at}\n", @user
         Contact.count.should == 2
         res[:updated].should == 1
         res[:undeleted].should == 1
@@ -95,14 +95,14 @@ describe Contact do
 
       it 'ignores deletion if the record in the DB is updated later' do
         res = Contact.merge_csv HEADER +
-            "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at}\t#{@c1.updated_at - 1.second}\n", current_user
+            "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at}\t#{@c1.updated_at - 1.second}\n", @user
         Contact.count.should == 2
         res[:skipped].should == 1
       end
 
       it 'deletes the record unless the record in the DB is updated later' do
         res = Contact.merge_csv HEADER +
-            "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at}\t#{@c1.updated_at}\n", current_user
+            "\n#{@c1.id}\tnew_name\t\t\t\t#{@c1.updated_at}\t#{@c1.updated_at}\n", @user
         Contact.count.should == 1
         res[:deleted].should == 1
       end

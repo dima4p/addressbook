@@ -31,5 +31,17 @@ describe ContactsController do
       { :delete => "/contacts/1" }.should route_to(:controller => "contacts", :action => "destroy", :id => "1")
     end
 
+    it "recognizes and generates #export" do
+      { :get => "/contacts/export" }.should route_to(:controller => "contacts", :action => "export")
+    end
+
+    it "recognizes and generates #import" do
+      { :get => "/contacts/import" }.should route_to(:controller => "contacts", :action => "import")
+    end
+
+    it "recognizes and generates #upload" do
+      { :post => "/contacts/upload" }.should route_to(:controller => "contacts", :action => "upload")
+    end
+
   end
 end

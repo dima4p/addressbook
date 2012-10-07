@@ -27,4 +27,13 @@ describe "contacts/index.html.haml" do
     assert_select "tr>td", :text => "Last Name".to_s, :count => 2
     assert_select "tr>td", :text => "Phone".to_s, :count => 2
   end
+
+  it 'renders links to actions' do
+    render
+
+    assert_select 'a[href=?]', new_contact_path
+    assert_select 'a[href=?]', export_contacts_path
+    assert_select 'a[href=?]', import_contacts_path
+  end
+
 end

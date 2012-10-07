@@ -43,7 +43,7 @@ class Contact < ActiveRecord::Base
             messages << [csv_record.to_csv(col_sep: "\t"), record.errors.messages]
           end
         else
-          record = with_deleted.find_by_id id
+          record = with_deleted.find_by_user_id_and_id user, id
           if record.nil?
             skipped += 1
           else
