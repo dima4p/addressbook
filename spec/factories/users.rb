@@ -8,4 +8,8 @@ FactoryGirl.define do
     sequence(:single_access_token) {|n| "single_access_token_#{n}_string"}
     sequence(:perishable_token) {|n| "perishable_token_#{n}_string"}
   end
+
+  factory :active_user, parent: :user do
+    active true
+  end
 end

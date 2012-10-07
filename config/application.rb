@@ -79,3 +79,5 @@ end
 
 RTL_LANGS = [:ar, :dv, :fa, :ha, :he, :ps, :ur, :yi]
 require 'assets_path'
+
+require 'csv'
