@@ -1,0 +1,26 @@
+--- 
+ru: 
+  activerecord: 
+    attributes: 
+      contact: 
+        first_name: "Имя"
+        last_name: "Фамилия"
+        middle_name: "Отчество"
+        phone: Телефон
+    models: 
+      contact: Запись
+  contacts: 
+    edit: 
+      title: "Новая запись"
+    form: 
+      contact: Запись
+    index: 
+      new_contact: "Добавить новую запись"
+      title: Телефоны
+    new: 
+      title: Новая запись
+    show: 
+      title: Подробности
+    was_created: "Запись была успешно добавлена"
+    was_deleted: "Запись была успешно удалена"
+    was_updated: "Запись была успешно изменена"

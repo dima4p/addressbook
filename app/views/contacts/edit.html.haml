@@ -1,0 +1,6 @@
+- title t('.title')
+
+%p.nav
+  - if can? :index, Contact
+    = link_to t('back'), contacts_path, :class => 'index'
+= render 'form'

@@ -1,0 +1,42 @@
+- title t('.title')
+
+- if can? :new, Contact
+  %p.nav= link_to t('.new_contact'), new_contact_path, :class => 'new'
+
+- colspan = 0
+- action = {}
+- for abilty in [:edit, :destroy]
+  - if can? abilty, Contact
+    - colspan += 1
+    - action[abilty] = true
+
+%table
+  %thead
+    %tr
+      %th
+        = link_to Contact.human_attribute_name(:first_name), contacts_path(sort: 'first_name')
+      %th
+        = link_to Contact.human_attribute_name(:middle_name), contacts_path(sort: 'middle_name')
+      %th
+        = link_to Contact.human_attribute_name(:last_name), contacts_path(sort: 'last_name')
+      %th
+        = link_to  Contact.human_attribute_name(:phone), contacts_path(sort: 'phone')
+
+      - if colspan > 0
+        %th{:colspan => colspan}= t 'actions'
+
+  %tbody
+    - for contact in @contacts
+      %tr{ :class => cycle(:odd, :even) }
+        %td= contact.first_name
+        %td= contact.middle_name
+        %td= contact.last_name
+        %td= contact.phone
+        - if action[:edit]
+          %td.action
+            - if can? :edit, contact
+              = link_to t('edit'), edit_contact_path(contact), :class => 'edit'
+        - if action[:destroy]
+          %td.action
+            - if can? :destroy, contact
+              = link_to t('destroy'), contact, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy'

@@ -2,6 +2,8 @@ Addressbook::Application.routes.draw do
   scope "(:locale)",
       :locale =>  /en|ru/ do
 
+    resources :contacts
+
     resources :password_resets, :only => [ :new, :create, :edit, :update ]
 
     match "activate/:code" => "activations#create", :as => :activate
@@ -16,7 +18,7 @@ Addressbook::Application.routes.draw do
 
     resources :users
 
-    root :to => 'users#index'
+    root :to => 'contacts#index'
 
   end
 

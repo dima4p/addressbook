@@ -1,0 +1,38 @@
+--- 
+en:
+  activerecord:
+    models:
+      contact:
+        Contact
+
+    attributes:
+      contact:
+        first_name: First name
+        middle_name: Middle name
+        last_name: Last name
+        phone: Phone
+
+  contacts:
+    index:
+      new_contact:
+        Create new contact
+      title:
+        Listing of contacts
+    edit:
+      title:
+        Edit contact
+    form:
+      contact:
+        Contact
+    new:
+      title:
+        Adding a contact
+    show:
+      title:
+        Contact details
+    was_created:
+      Contact was successfully created
+    was_updated:
+      Contact was successfully updated
+    was_deleted:
+      Contact was successfully deleted

@@ -16,7 +16,7 @@
     -# = include_wice_grid_assets
     = yield(:head)
 
-  %body{:lang => I18n.locale, :dir => @text_direction, :class => @text_direction}
+  %body{:lang => I18n.locale, :dir => @text_direction, :class => [controller.controller_name, controller.action_name, @text_direction, yield(:body_class)]}
     -# @debug_ability.each do |ability|
       %p
         = ability.inspect

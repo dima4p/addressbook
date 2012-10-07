@@ -1,0 +1,19 @@
+- title t('.title')
+
+%p.nav
+  - if can? :index, Contact
+    = link_to t('back'), contacts_path, :class => 'index'
+  - if can? :edit, @contact
+    = link_to t('edit'), edit_contact_path(@contact), :class => 'edit'
+
+%dl
+  %dt= Contact.human_attribute_name :first_name
+  %dd= @contact.first_name
+  %dt= Contact.human_attribute_name :middle_name
+  %dd= @contact.middle_name
+  %dt= Contact.human_attribute_name :last_name
+  %dd= @contact.last_name
+  %dt= Contact.human_attribute_name :phone
+  %dd= @contact.phone
+  %dt= Contact.human_attribute_name :deleted_at
+  %dd= @contact.deleted_at

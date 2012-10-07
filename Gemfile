@@ -14,11 +14,16 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
+  gem "compass-rails"
+  gem "fancy-buttons"
 
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails'
+
+# models
+gem 'rails3_acts_as_paranoid'
 
 # auth
 gem 'authlogic'

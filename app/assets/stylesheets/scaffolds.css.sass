@@ -1,6 +1,6 @@
 body
-  background-color: #fff
-  color: #333
+  background-color: $body_bg
+  color: $body
   font-family: verdana, arial, helvetica, sans-serif
   font-size: 13px
   line-height: 18px
@@ -12,17 +12,17 @@ p, ol, ul, td
   line-height: 18px
 
 pre
-  background-color: #eee
+  background-color: $unformatted
   padding: 10px
   font-size: 11px
 
 a
-  color: #000
+  color: $link
   &:visited
-    color: #666
+    color: $link_visited
   &:hover
-    color: #fff
-    background-color: #000
+    color: $link_hover
+    background-color: $link_hover_bg
 
 div
   &.field, &.actions
@@ -35,13 +35,13 @@ div
   margin: 10px 0 0
 
 #flash_notice
-  background-color: #ccffcc
-  border: solid 1px #66cc66
+  background-color: $flash_notice_bg
+  border: solid 1px $flash_notice_border
 
 #flash_error,
 #flash_alert
-  background-color: #ffcccc
-  border: solid 1px #cc6666
+  background-color: $flash_error_bg
+  border: solid 1px $flash_error_border
 
 .field_with_errors
   padding: 2px
@@ -77,3 +77,34 @@ div
 
 #content
   margin: 10px
+
+a.index
+  +fancy-button($record_index_color, 12px)
+a.new
+  +fancy-button($record_add_color, 12px)
+a.show
+  +fancy-button($record_show_color, 12px)
+a.edit
+  +fancy-button($record_edit_color, 12px)
+a.destroy
+  +fancy-button($record_destroy_color, 12px)
+
+.simple_form
+  div
+    margin-bottom: 5px
+  label
+    float: left
+    font-weight: bold
+    margin: 2px 1em
+    text-align: right
+    width: 7em
+    &.boolean
+      float: none
+      font-weight: normal
+      margin-left: 12em
+      padding-left: 24px
+  ul
+    margin-left: 196px
+    label
+      float: none
+      font-weight: normal

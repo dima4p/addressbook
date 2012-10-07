@@ -14,7 +14,7 @@ module AssetPath
     Dir[File.join(base_dir, *inside_dirs, "/**/*sass")].each do |stylesheet_path|
       unless File.directory?(stylesheet_path)
         current_file_name = stylesheet_path.gsub(base_dir.to_s, '')
-        output << "@import '#{current_file_name}'\n"
+        output << "/* @import '#{current_file_name}'*/\n@import '#{current_file_name}'\n"
       end
     end
 
