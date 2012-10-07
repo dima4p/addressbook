@@ -52,7 +52,8 @@
 
         - if show_title?
           %h1
-            = image_tag 'logo.png'
+            = link_to root_url do
+              - image_tag 'logo.png'
             = yield(:title)
 
         = yield
