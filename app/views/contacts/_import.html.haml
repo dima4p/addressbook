@@ -1,5 +1,6 @@
 = simple_form_for(:csv, url: {action: :upload}) do |f|
   .form-inputs
+    = hidden_field_tag :sort, @sort
     = f.file_field :name
   .form-actions
     = f.submit t('.upload')

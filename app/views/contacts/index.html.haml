@@ -6,7 +6,7 @@
   - if can? :export, Contact
     = link_to t('.export_contacts'), export_contacts_path, :class => 'export'
   - if can? :import, Contact
-    = link_to t('.import_contacts'), import_contacts_path, :class => 'import onpage'
+    = link_to t('.import_contacts'), import_contacts_path(sort: @sort), :class => 'import onpage'
 
 - colspan = 0
 

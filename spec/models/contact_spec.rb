@@ -22,7 +22,8 @@ describe Contact do
       res = res.split(/\n/)
       res.first.should == HEADER
       res = res.last.split(/\t/)
-      res.last.should == c2.deleted_at.to_s(:db)
+      res.last.should == '""'
+      res[1].should == c1.first_name
     end
 
     describe 'responding to :merge_csv' do

@@ -31,7 +31,8 @@ $ ->
 
   $(document).on 'click', 'body.contacts .ajax', ->
     form = $(this).closest('form')
-    $.post form.attr('action'), form.serialize(), null, 'script'
+    form.ajaxSubmit
+      dataType: 'script'
     false
 
   true

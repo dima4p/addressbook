@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
   load_and_authorize_resource index: [:export], except: [:import, :upload]
-  before_filter :set_order, only: [:index, :new, :create]
+  before_filter :set_order, only: [:index, :new, :create, :import, :upload]
 
   # GET /contacts
   # GET /contacts.json
@@ -125,7 +125,14 @@ class ContactsController < ApplicationController
   def upload
     authorize! :upload, Contact
     Contact.merge_csv params[:csv][:name].read, current_user
-    redirect_to contacts_url
+    respond_to do |format|
+      format.html {redirect_to contacts_url}
+      format.js {
+        @contacts = Contact.accessible_by current_ability
+        @contacts = @contacts.order(@sort) if @sort and Contact.attribute_names.include? @sort
+        render 'create'
+      }
+    end
   end
 
   private

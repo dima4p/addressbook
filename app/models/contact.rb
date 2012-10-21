@@ -28,6 +28,8 @@ class Contact < ActiveRecord::Base
     def merge_csv(string, user)
       total = created = updated = undeleted = deleted = skipped = errors = 0
       messages = []
+      string.force_encoding('UTF-8')
+      logger.debug "Contact@#{__LINE__}.merge_csv #{string.encoding.name}" if logger.debug?
       logger.debug "Contact@#{__LINE__}.merge_csv #{string.inspect}" if logger.debug?
       parsed = CSV.parse(string, CSV_OPTIONS.merge(headers: true))
       total = parsed.size
@@ -47,6 +49,7 @@ class Contact < ActiveRecord::Base
           if record.nil?
             skipped += 1
           else
+            logger.debug "Contact@#{__LINE__}.merge_csv #{record.inspect}" if logger.debug?
             logger.debug "Contact@#{__LINE__}.merge_csv #{csv_record['updated_at'].to_time.inspect} #{record.updated_at.inspect}" if logger.debug?
             if csv_record['deleted_at'].present? and dlt = csv_record['deleted_at'].to_time and
                 record.deleted_at.blank?
