@@ -25,6 +25,9 @@ class Contact < ActiveRecord::Base
       end
     end     # to_csv
 
+    # Merges the data from CSV :string into the database for the given :user.
+    # We assume that the CSV file is edited by a person, not other application, so new records
+    # with :id can not appear in the CSV file.
     def merge_csv(string, user)
       total = created = updated = undeleted = deleted = skipped = errors = 0
       messages = []
