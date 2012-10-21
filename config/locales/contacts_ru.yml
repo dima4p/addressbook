@@ -3,9 +3,9 @@ ru:
   activerecord: 
     attributes: 
       contact: 
-        first_name: "Имя"
-        last_name: "Фамилия"
-        middle_name: "Отчество"
+        first_name: Имя
+        last_name: Фамилия
+        middle_name: Отчество
         phone: Телефон
     models: 
       contact: Запись
@@ -15,14 +15,15 @@ ru:
     form: 
       contact: Запись
     import: 
-      upload: 'Отправить файл и обновить записи'
+      upload: "Отправить файл и обновить записи"
     index: 
-      export_contacts: 'Cохранить как CSV'
-      import_contacts: 'Загрузить новые данные'
+      close_overlay: Закрыть
+      export_contacts: "Cохранить как CSV"
+      import_contacts: "Загрузить новые данные"
       new_contact: "Добавить новую запись"
       title: Телефоны
     new: 
-      title: Новая запись
+      title: "Новая запись"
     show: 
       title: Подробности
     was_created: "Запись была успешно добавлена"

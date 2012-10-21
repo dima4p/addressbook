@@ -1,0 +1,17 @@
+- if @contact and contact.id == @contact.id
+  - new_record = 'new_record'
+- else
+  - new_record = nil
+%tr{ :class => "#{new_record} #{cycle(:odd, :even)}" }
+  %td= contact.first_name
+  %td= contact.middle_name
+  %td= contact.last_name
+  %td= contact.phone
+  - if can? :edit, contact
+    %td.action
+      - if can? :edit, contact
+        = link_to t('edit'), edit_contact_path(contact), :class => 'edit onpage'
+  - if can? :destroy, contact
+    %td.action
+      - if can? :destroy, contact
+        = link_to t('destroy'), contact, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true

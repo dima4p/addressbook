@@ -17,6 +17,7 @@ en:
     import: 
       upload: "Upload the file and update the contacts"
     index: 
+      close_overlay: 'Close'
       export_contacts: "Download in CSV format"
       import_contacts: "Upload new data"
       new_contact: "Create new contact"
