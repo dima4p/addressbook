@@ -15,7 +15,7 @@ class Contact < ActiveRecord::Base
     def to_csv(rel)
       CSV.generate(CSV_OPTIONS) do |csv|
         csv << COLUMNS
-        rel.with_deleted.find_each do |contact|
+        rel.find_each do |contact|
           csv << COLUMNS.inject([]) do |acc, attr|
             attr = contact.send attr
             acc << (ActiveSupport::TimeWithZone === attr ? attr.to_s(:db) : attr.to_s)
