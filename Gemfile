@@ -28,6 +28,7 @@ gem 'rails3_acts_as_paranoid'
 # auth
 gem 'authlogic'
 gem 'cancan'
+gem 'omniauth-facebook'
 
 # views
 gem "haml-rails"
