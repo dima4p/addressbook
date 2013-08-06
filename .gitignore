@@ -16,3 +16,4 @@
 
 db/schema.rb
 .sass-cache
+/config/settings.yml

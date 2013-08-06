@@ -74,6 +74,13 @@ module Addressbook
     config.action_mailer.raise_delivery_errors = true
     #config.action_mailer.default_options = {from: 'dima@koulikoff.ru'}
 
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'settings.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
+
   end
 end
 
