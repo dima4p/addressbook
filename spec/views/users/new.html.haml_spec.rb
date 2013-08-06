@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "users/new.html.haml" do
 
   before(:each) do
-    controller.stub!(:can?).and_return(true)
+    controller.stub(:can?).and_return(true)
     assign(:user, @user = stub_model(User,
       :email => "MyString",
       :password => "MyString"

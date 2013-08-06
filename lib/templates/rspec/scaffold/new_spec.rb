@@ -3,7 +3,7 @@ require 'spec_helper'
 <% output_attributes = attributes.reject{|attribute| [:datetime, :timestamp, :time, :date].index(attribute.type) } -%>
 describe "<%= table_name %>/new.html.<%= options[:template_engine] %>" do
   before(:each) do
-    controller.stub!(:can?).and_return(true)
+    controller.stub(:can?).and_return(true)
 <% if options[:fixture_replacement] == :factory_girl -%>
     @<%= file_name %> = assign(:<%= file_name %>, create(:<%= file_name %>))
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "contacts/import.html.haml" do
   it "renders import contact form" do
-    controller.stub!(:can?).and_return(true)
+    controller.stub(:can?).and_return(true)
     render
 
     assert_select "form", :action => contacts_path, :method => "post" do

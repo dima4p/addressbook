@@ -8,7 +8,7 @@ describe UsersController do
   end
 
   before :each do
-    controller.stub!(:current_user).and_return(current_user)
+    controller.stub(:current_user).and_return(current_user)
   end
 
   describe "GET index" do

@@ -7,7 +7,7 @@ describe <%= controller_class_name %>Controller do
   end
 
   before :each do
-    controller.stub!(:current_user).and_return(current_user)
+    controller.stub(:current_user).and_return(current_user)
   end
 
 <% unless options[:singleton] -%>

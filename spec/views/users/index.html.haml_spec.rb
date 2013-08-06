@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "users/index.html.haml" do
   before(:each) do
-    controller.stub!(:can?).and_return(true)
+    controller.stub(:can?).and_return(true)
     assign(:users, [
       stub_model(User,
         :email => "Email",

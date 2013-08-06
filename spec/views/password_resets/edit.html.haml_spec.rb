@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "password_resets/edit.html.haml" do
   before(:each) do
-    controller.stub!(:can?).and_return(true)
+    controller.stub(:can?).and_return(true)
     @user = assign(:password_reset, stub_model(User, {
       :new_record? => false,
       :id => 5

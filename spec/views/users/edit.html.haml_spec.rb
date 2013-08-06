@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe "users/edit.html.haml" do
   before(:each) do
-    controller.stub!(:can?).and_return(true)
+    controller.stub(:can?).and_return(true)
     @user = assign(:user, @user = stub_model(User,
       :new_record? => false,
       :email => "MyString",

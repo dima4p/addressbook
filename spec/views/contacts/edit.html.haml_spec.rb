@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe "contacts/edit.html.haml" do
   before(:each) do
-    controller.stub!(:can?).and_return(true)
+    controller.stub(:can?).and_return(true)
     @contact = assign(:contact, stub_model(Contact,
       :first_name => "MyString",
       :middle_name => "MyString",
