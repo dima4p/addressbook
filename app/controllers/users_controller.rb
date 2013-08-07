@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     end
     respond_to do |format|
       if @user.valid?
-        format.html { redirect_to(@user, :notice => notice) }
+        format.html { redirect_to(login_path, :notice => notice) }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render :action => "new" }
