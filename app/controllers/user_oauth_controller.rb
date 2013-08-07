@@ -18,6 +18,7 @@ class UserOauthController < ApplicationController
   protected
 
   def auth_hash
+    logger.debug "UserOauthController@#{__LINE__}#auth_hash #{request.env['omniauth.auth'].inspect}" if logger.debug?
     request.env['omniauth.auth']
   end
 end
