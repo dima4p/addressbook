@@ -1,0 +1,6 @@
+--- 
+ru: 
+  omniauth: 
+    logged_in: "Вы вошли через соцсеть"
+    not_authorized: "Вход не удался"
+    not_authorized_with_message: "Вход не удался. %{message}"

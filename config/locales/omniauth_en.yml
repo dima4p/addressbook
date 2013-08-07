@@ -1,0 +1,6 @@
+--- 
+en:
+  omniauth:
+    logged_in: Logged in
+    not_authorized: 'Not authorized'
+    not_authorized_with_message: 'Not authorized. %{message}'

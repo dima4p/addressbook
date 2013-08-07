@@ -3,14 +3,16 @@ class UserOauthController < ApplicationController
     @current_user = User.find_or_create_from_oauth(auth_hash)
     if @current_user
       UserSession.create(@current_user, true)
-      redirect_to root_url, :notice => "Logged in"
+      redirect_to root_url, :notice => t("omniauth.logged_in")
     else
-      redirect_to root_url, :flash => {:error => "Not authorized"}
+      redirect_to root_url, :flash => {:error => t("omniauth.not_authorized")}
     end
   end
 
   def failure
-    redirect_to root_url, :flash => {:error => "Not authorized. #{params[:message]}"}
+    redirect_to root_url,
+        :flash => {:error => t("omniauth.not_authorized_with_message",
+                               message: params[:message])}
   end
 
   protected
