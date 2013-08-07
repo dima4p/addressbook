@@ -7,8 +7,10 @@ ru:
 
     attributes:
       user:
+        picture_url: 'Ссылка на картинку'
         email:
           Электронный адрес
+        name: 'Имя'
         password:
           Пароль
         password_confirmation:

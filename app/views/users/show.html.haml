@@ -7,5 +7,10 @@
     = link_to t('edit'), edit_user_path(@user), :class => 'edit'
 
 %dl
+  %dt= User.human_attribute_name :name
+  %dd= @user.name
   %dt= User.human_attribute_name :email
   %dd= @user.email
+  - if @user.picture_url.present?
+    %dt= t '.picture'
+    %dd= image_tag @user.picture_url

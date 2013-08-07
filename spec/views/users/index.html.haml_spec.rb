@@ -5,10 +5,12 @@ describe "users/index.html.haml" do
     controller.stub(:can?).and_return(true)
     assign(:users, [
       stub_model(User,
+        :name => "Bob D",
         :email => "Email",
         :active => true
       ),
       stub_model(User,
+        :name => "Bob D",
         :email => "Email",
         :active => true
       )
@@ -19,6 +21,7 @@ describe "users/index.html.haml" do
     render
     # rendered.should == ''
 
+    assert_select "tr>td", :text => "Bob D".to_s, :count => 2
     assert_select "tr>td", :text => "Email".to_s, :count => 2
     assert_select "tr>td", :text => I18n.t("true"), :count => 2
   end

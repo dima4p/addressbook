@@ -15,10 +15,11 @@ Addressbook::Application.routes.draw do
     match "activate/:code" => "activations#create", :as => :activate
 
     match 'signup' => 'users#new', :as => :signup
-
     match 'logout' => 'user_sessions#destroy', :as => :logout
-
     match 'login' => 'user_sessions#new', :as => :login
+
+    match '/auth/:provider/callback' => 'user_oauth#create', :as => :callback
+    match '/auth/failure' => 'user_oauth#failure', :as => :failure
 
     resources :user_sessions
 
@@ -28,5 +29,7 @@ Addressbook::Application.routes.draw do
 
   end
 
+  match '/auth/facebook' => 'user_oauth#create', :as => :fb_login
+  #match '/auth/twitter' => 'user_oauth#create', :as => :tw_login
 
 end

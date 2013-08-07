@@ -29,4 +29,5 @@
       = hidden_field_tag 'resend_activation', true
       = f.submit t('authlogic.resend_activation', default: 'Resend activation code')
     - else
-      = f.submit t('authlogic.do_login', default: 'Login')
+      = f.submit t('authlogic.do_login', default: 'Login with password')
+      = link_to t('authlogic.fb_login', default: 'FB login'), fb_login_path

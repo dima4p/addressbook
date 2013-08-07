@@ -13,6 +13,7 @@
 %table
   %thead
     %tr
+      %th= User.human_attribute_name :name
       %th= User.human_attribute_name :email
       %th= User.human_attribute_name :active
       - if colspan > 0
@@ -21,6 +22,7 @@
   %tbody
     - for user in @users
       %tr{ :class => cycle(:odd, :even) }
+        %td= user.name
         %td= user.email
         %td= t user.active?.to_s
         - if action[:show]

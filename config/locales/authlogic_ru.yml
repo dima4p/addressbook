@@ -45,9 +45,10 @@ ru:
         remember_me:
           Запомнить меня
     do_login:
-      Войти
+      Войти с паролемы
     do_not_have_account:
       Ещё нет счёта?
+    fb_login: 'Войти через Facebook'
     new_activation_code: 'На Вашу почту выслан новый код активации'
     register:
       Зарегистрироваться

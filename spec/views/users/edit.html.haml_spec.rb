@@ -30,6 +30,7 @@ describe "users/edit.html.haml" do
     render
     assert_select "a[href='/en/users']", 1
     assert_select "form", :action => users_path, :method => "post" do
+      assert_select "input#user_name[name=?]", "user[name]", 1
       assert_select "input#user_email[name=?]", "user[email]", 1
       assert_select "input#user_password[name=?]", "user[password]"
       assert_select "input#user_admin", 0

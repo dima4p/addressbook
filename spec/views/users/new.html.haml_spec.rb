@@ -15,6 +15,7 @@ describe "users/new.html.haml" do
     view.should render_template(:partial => "users/_form")
     assert_select "a[href='/en/users']"
     assert_select "form", :action => users_path, :method => "post" do
+      assert_select "input#user_name[name=?]", "user[name]", 1
       assert_select "input#user_email", :name => "user[email]"
       assert_select "input#user_password", :name => "user[password]"
       assert_select "input#user_admin", :name => "user[roles]"
