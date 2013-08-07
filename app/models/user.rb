@@ -4,18 +4,9 @@ class User < ActiveRecord::Base
 
   acts_as_authentic do |config|
     config.login_field :email
-    config.validate_email_field = false
-    config.validate_password_field = false
+    config.merge_validates_length_of_password_field_options minimum: 8,
+        if: :password_required?
   end
-
-  validates :password,
-      presence: { if: :password_required? },
-      length: { minimum: 8, if: :password_required? },
-      confirmation: true
-  validates :email,
-      presence: { if: :email_available?},
-      uniqueness: true,
-      confirmation: true
 
   after_create :set_admin_for_first
 
@@ -120,7 +111,7 @@ class User < ActiveRecord::Base
   end
 
   def password_required?
-    facebook_uid.blank?
+    require_password? && facebook_uid.blank?
     #facebook_uid.blank? && twitter_uid.blank?
   end
 
