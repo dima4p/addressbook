@@ -21,7 +21,7 @@ describe UsersController do
   describe "GET show" do
     it 'redirects to :login if not logged in' do
       controller.should_receive(:current_user).and_return(User.new)
-      User.should_receive(:find).with(current_user.id).and_return(nil)
+      User.should_receive(:find).with(current_user.id.to_s).and_return(nil)
       get :show, :id => "current"
       response.should redirect_to(login_path)
     end

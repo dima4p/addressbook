@@ -44,6 +44,7 @@ describe Contact do
       end
 
       it 'reports errors if new record is not valid' do
+        logger.debug "Rspec Contact@#{__LINE__}#responding to :merge_csv reports errors if new record is not valid"
         res = Contact.merge_csv HEADER + "\n\t\tnew_name\n", @user
         Contact.count.should == 2
         res[:created].should == 0

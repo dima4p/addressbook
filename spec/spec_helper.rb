@@ -58,6 +58,10 @@ end
 ActionController::Base.default_url_options.update :locale => 'en'
 I18n.locale = :en
 
+def logger
+  Rails.logger
+end
+
 def current_user(stubs={})
   @mock_current_user ||= mock_model(User, :email => 'user@abook.ru').tap do |user|
     stubs.reverse_merge! :is? => true

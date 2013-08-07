@@ -33,21 +33,21 @@ describe User do
   end
 
   it 'should respond to :deliver_activation_instructions!' do
-    Authlogic::Random.stub!(:friendly_token).times.and_return('perishable token')
+    Authlogic::Random.stub(:friendly_token).times.and_return('perishable token')
     Notifier.should_receive(:activation_instructions).with(subject).and_return(mock_notifier)
     subject.deliver_activation_instructions!
     subject.perishable_token.should == 'perishable token'
   end
 
   it 'should respond to :deliver_welcome!' do
-    Authlogic::Random.stub!(:friendly_token).and_return('perishable token')
+    Authlogic::Random.stub(:friendly_token).and_return('perishable token')
     Notifier.should_receive(:welcome).with(subject).and_return(mock_notifier)
     subject.deliver_welcome!
     subject.perishable_token.should == 'perishable token'
   end
 
   it 'should respond to :deliver_password_reset_instructions!' do
-    Authlogic::Random.stub!(:friendly_token).and_return('perishable token')
+    Authlogic::Random.stub(:friendly_token).and_return('perishable token')
     Notifier.should_receive(:password_reset_instructions).with(subject).and_return(mock_notifier)
     subject.deliver_password_reset_instructions!
     subject.perishable_token.should == 'perishable token'

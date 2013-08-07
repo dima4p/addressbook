@@ -39,7 +39,9 @@ class Contact < ActiveRecord::Base
       parsed.each do |csv_record|
         logger.debug "Contact@#{__LINE__}.merge_csv #{csv_record.to_hash.inspect}" if logger.debug?
         if (id = csv_record['id']).nil?
-          record = create csv_record.to_hash.merge(user_id: user), without_protection: true
+          record = new csv_record.to_hash, without_protection: true
+          record.user_id = user.id
+          record.save
           logger.debug "Contact@#{__LINE__}.merge_csv #{record.inspect}" if logger.debug?
           if record.valid?
             created += 1
