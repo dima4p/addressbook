@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         preferred_language
       end
     @text_direction = RTL_LANGS.include?(I18n.locale) ? 'rtl' : 'ltr'
-    logger.info "ApplicationController@#{__LINE__}#set_locale locale is #{I18n.locale.inspect} user is #{current_user.new_record? ? '_guest_' : current_user.email + "(#{current_user.id})"}"
+    logger.info "ApplicationController@#{__LINE__}#set_locale locale is #{I18n.locale.inspect} user is #{logged_in? ? current_user.email + "(#{current_user.id})" : '_guest_'}"
 #     @debug_ability = current_ability.send(:rules).map do |r|
 #       {:a => r.actions, :r => r.conditions, :s => r.subjects.map{|klass|klass.name}}
 #     end

@@ -4,8 +4,8 @@ class Ability
   def initialize(user)
 
     can :manage, UserSession
-    can :create, User if user.new_record?
-    return if user.new_record?
+    can :create, User if not user
+    return if not user
 
     if user.is? :admin
       can :manage, :all
