@@ -3,6 +3,8 @@ class ContactsController < ApplicationController
   load_and_authorize_resource index: [:export], except: [:import, :upload]
   before_filter :set_order, only: [:index, :new, :create, :import, :upload]
 
+  autocomplete :user, :name, full: true
+
   # GET /contacts
   # GET /contacts.json
   def index

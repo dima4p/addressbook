@@ -43,5 +43,9 @@ describe ContactsController do
       { :post => "/contacts/upload" }.should route_to(:controller => "contacts", :action => "upload")
     end
 
+    it "recognizes and generates #autocomplete_user_name" do
+      { :get => "/contacts/autocomplete_user_name" }.should route_to(:controller => "contacts", :action => "autocomplete_user_name")
+    end
+
   end
 end

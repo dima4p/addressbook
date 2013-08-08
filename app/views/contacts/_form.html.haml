@@ -3,10 +3,13 @@
 
   .form-inputs
     = hidden_field_tag :sort, @sort
-    = f.input :first_name
+    = f.input :first_name, as: :autocomplete,
+      url: autocomplete_user_name_contacts_path
     = f.input :middle_name
     = f.input :last_name
     = f.input :phone
 
   .form-actions
     = f.button :submit
+
+#autocomplete_tab{style: 'width: 200px;'}

@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem "jquery-ui-rails"
 
 # models
 gem 'rails3_acts_as_paranoid'
@@ -33,6 +34,7 @@ gem 'omniauth-facebook'
 # views
 gem "haml-rails"
 gem "simple_form"
+gem 'rails3-jquery-autocomplete'
 
 group :development do
   gem 'translations_sync'

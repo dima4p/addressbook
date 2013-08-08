@@ -4,6 +4,7 @@ Addressbook::Application.routes.draw do
 
     resources :contacts do
       collection do
+        get :autocomplete_user_name
         get :export
         get :import
         post :upload
