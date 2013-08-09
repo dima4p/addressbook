@@ -62,7 +62,7 @@ describe UsersController do
       it "redirects to the created user" do
         User.stub(:new) { mock_user(:save => true) }
         post :create, :user => {}
-        response.should redirect_to(user_url(mock_user))
+        response.should redirect_to(login_url)
       end
 
       it "sends the notification to the created user" do
